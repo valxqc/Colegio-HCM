@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Colegio HCM - Educación de Calidad para el Futuro</title>
+<link rel="icon" type="image/png" href="logo.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@400;600;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+<style>
+:root {
+--primary-blue: #2f4a1a; /* Verde Oscuro */
+--secondary-green: #28A745; /* Verde Brillante (para CTA) */
+--accent-yellow: #FFC107;
+--text-dark: #343A40;
+--text-light: #F8F9FA;
+--bg-light: #F8F9FA;
+
+/* Nuevas variables para el footer y admisiones */
+--primary-green-light: #6c9d57; /* Verde Intermedio */
+--accent-green: #9acd32; /* Lima / Amarillo-Verde */
+--primary-green-dark: #2f4a1a; /* Verde Oscuro Principal */
+}
+
+body {
+font-family: 'Lato', sans-serif;
+color: var(--text-dark);
+background-color: var(--bg-light);
+}
+
+h1, h2, h3, h4, h5, h6 {
+font-family: 'Montserrat', sans-serif;
+font-weight: 700;
+color: var(--primary-blue);
+}
+
+/* Topbar */
+.topbar {
+background: var(--primary-green-dark);
+color: #fff;
+font-size: 0.9rem;
+padding: 6px 0;
+}
+.topbar .contact-info span {
+margin-right: 15px;
+}
+.topbar i {
+margin-right: 5px;
+color: var(--accent-green);
+}
+.topbar .social-icons a {
+color: #fff;
+margin-left: 12px;
+transition: color 0.3s ease;
+}
+.topbar .social-icons a:hover {
+color: var(--accent-green);
+}
+
+/* Navbar */
+.navbar-custom {
+background-color: var(--primary-green-light);
+padding: 12px 0;
+box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+position: sticky;
+top: 0;
+z-index: 1000;
+}
+.navbar-custom .navbar-brand {
+color: #fff;
+font-weight: bold;
+font-size: 1.6rem;
+display: flex;
+align-items: center;
+}
+.navbar-custom .navbar-brand img {
+margin-right: 8px;
+height: 45px;
+width: auto;
+}
+.navbar-custom .nav-link {
+color: #fff;
+font-weight: 500;
+margin-right: 12px;
+transition: all 0.3s ease-in-out;
+padding: 8px 15px;
+border-radius: 50px;
+}
+.navbar-custom .nav-link:hover,
+.navbar-custom .nav-link.active {
+background-color: var(--primary-green-dark);
+color: #fff;
+}
+
+/* Estilos para Redes Sociales dentro del Navbar */
+.navbar-custom .social-icons a {
+color: #fff;
+font-size: 1.1rem; /* 18px */
+margin-left: 12px;
+transition: color 0.3s ease;
+text-decoration: none; /* Asegurar que no haya subrayado */
+}
+.navbar-custom .social-icons a:hover {
+color: var(--accent-green); /* Usamos la variable para consistencia */
+}
+
+/* Hero Section */
+.hero-section {
+position: relative;
+height: 600px;
+box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+overflow: hidden;
+}
+.carousel, .carousel-inner, .carousel-item, .carousel-item img {
+height: 100%;
+}
+.carousel-item img {
+object-fit: cover;
+filter: brightness(0.5);
+}
+.hero-content {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+z-index: 2;
+max-width: 900px;
+text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+text-align: center;
+color: white;
+padding: 20px;
+}
+.hero-content h1 {
+font-size: 3.8rem;
+margin-bottom: 20px;
+color: white;
+font-weight: 700;
+}
+.hero-content p {
+font-size: 1.6rem;
+margin-bottom: 30px;
+line-height: 1.6;
+color: white;
+font-weight: 300;
+}
+.hero-content .btn-primary {
+background-color: var(--secondary-green);
+border: none;
+font-size: 1.3rem;
+padding: 15px 40px;
+border-radius: 50px;
+transition: all 0.3s ease;
+}
+.hero-content .btn-primary:hover {
+background-color: #218838;
+transform: translateY(-3px);
+box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Nuevo estilo para el texto "Educando en Familia" */
+.text-on-bottom {
+position: absolute;
+bottom: 20px;
+left: 50%;
+transform: translateX(-50%);
+z-index: 3;
+color: white;
+font-size: 1.2rem;
+font-weight: 700;
+text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+letter-spacing: 2px;
+}
+
+/* Section Styling */
+.section-title {
+text-align: center;
+margin-bottom: 50px;
+font-size: 2.5rem;
+color: var(--primary-blue);
+position: relative;
+padding-bottom: 15px;
+}
+.section-title::after {
+content: '';
+position: absolute;
+left: 50%;
+bottom: 0;
+transform: translateX(-50%);
+height: 4px;
+width: 80px;
+background-color: var(--secondary-green);
+border-radius: 2px;
+}
+
+/* Card Styling */
+.card {
+border: none;
+border-radius: 15px;
+box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+overflow: hidden;
+height: 100%;
+}
+.card:hover {
+transform: translateY(-5px);
+box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+.card-img-top {
+height: 200px;
+object-fit: cover;
+}
+.card-body {
+padding: 25px;
+text-align: center;
+}
+.card-title {
+color: var(--primary-blue);
+font-family: 'Montserrat', sans-serif;
+font-weight: 600;
+margin-bottom: 15px;
+}
+.card-text {
+color: var(--text-dark);
+line-height: 1.7;
+margin-bottom: 15px;
+}
+.card-link {
+color: var(--secondary-green);
+font-weight: 600;
+text-decoration: none;
+transition: color 0.3s ease;
+}
+.card-link:hover {
+color: var(--primary-blue);
+}
+
+/* === INICIO: ESTILOS PARA EL MOSAICO === */
+#mosaicModal .modal-content {
+height: 100vh;
+background-color: rgba(0, 0, 0, 0.95) !important;
+border: none;
+}
+/* Asegura que el contenedor del cuerpo del modal no se salga */
+#mosaicModal .modal-body {
+overflow: hidden;
+}
+
+/* 🎯 CORRECCIÓN CLAVE: Estilo para el botón cerrar con hover rojo */
+#mosaicModal .btn-close {
+    opacity: 1; /* Asegura que no se oscurezca */
+    transition: all 0.3s ease;
+}
+/* Al pasar el ratón, forzamos el color rojo reemplazando el filtro SVG de Bootstrap */
+#mosaicModal .btn-close:hover {
+    /* Este es el código de un SVG rojo puro. Reemplaza el filtro blanco de btn-close-white */
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ff0000'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e") !important;
+    opacity: 1;
+}
+
+.mosaic {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 5px;
+width: 90%;
+/* Altura suficiente para contener las 32 imágenes */
+height: 280vh; 
+animation: scrollUp 40s linear infinite; /* Tiempo más largo para más suavidad */
+}
+.mosaic div {
+overflow: hidden;
+border-radius: 8px;
+}
+.mosaic img {
+width: 100%;
+height: 100%; 
+object-fit: cover;
+transition: transform 0.3s ease;
+}
+.mosaic img:hover {
+transform: scale(1.05);
+}
+
+@keyframes scrollUp {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-100%); } /* antes era -50% */
+}
+
+
+/* Versión móvil */
+@media (max-width: 767px) {
+.mosaic {
+grid-template-columns: repeat(2, 1fr);
+width: 100%;
+height: 400vh; 
+animation: scrollUp 60s linear infinite; 
+}
+}
+/* === FIN: ESTILOS PARA EL MOSAICO === */
+
+
+/* Admisiones Section */
+.admisiones-section {
+background: var(--bg-light);
+}
+
+.section-title {
+font-size: 2.2rem;
+font-weight: 700;
+color: var(--primary-green-dark);
+margin-bottom: 20px;
+}
+
+.steps-container {
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+margin-top: 40px;
+gap: 25px;
+}
+
+.step {
+background: #fff;
+border-radius: 15px;
+padding: 25px 20px;
+box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+max-width: 220px;
+transition: transform 0.3s;
+text-align: center;
+}
+
+.step:hover {
+transform: translateY(-5px);
+}
+
+.step-icon {
+font-size: 2.5rem;
+background: var(--primary-green-light);
+color: #fff;
+width: 70px;
+height: 70px;
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 50%;
+margin: 0 auto 15px;
+box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.step h4 {
+color: var(--primary-green-dark);
+margin-bottom: 10px;
+}
+
+.step p {
+color: #555;
+font-size: 0.95rem;
+}
+
+.btn-admisiones {
+background: var(--primary-green-light);
+color: #fff;
+padding: 12px 35px;
+border-radius: 50px;
+font-weight: 600;
+text-decoration: none;
+transition: background 0.3s;
+display: inline-block;
+}
+
+.btn-admisiones:hover {
+background: var(--primary-green-dark);
+}
+
+/* NUEVOS ESTILOS PARA EL MAPA Y BOTÓN WAZE */
+.map-container {
+padding: 0 15px;
+}
+.map-container h4 {
+color: var(--primary-blue);
+font-weight: 600;
+}
+iframe {
+width: 100%;
+height: 100%;
+border-radius: 10px;
+box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.btn-waze {
+background-color: var(--secondary-green);
+border-color: var(--secondary-green);
+color: white;
+font-weight: 600;
+}
+.btn-waze:hover {
+background-color: var(--primary-green-dark);
+border-color: var(--primary-green-dark);
+}
+
+/* Footer Styling */
+.footer {
+margin-top: 40px;
+font-family: 'Poppins', sans-serif;
+}
+
+.footer-main {
+display: flex;
+justify-content: space-around;
+background: var(--primary-green-dark);
+color: #fff;
+padding: 40px 20px;
+flex-wrap: wrap;
+}
+
+.footer-col {
+max-width: 250px;
+margin: 15px;
+}
+
+.footer-col h4 {
+font-weight: 700;
+margin-bottom: 10px;
+color: var(--accent-green);
+}
+
+.footer-bottom {
+background: #2f4a1a;
+text-align: center;
+color: #ccc;
+padding: 10px;
+font-size: 0.85rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 991.98px) {
+.navbar-custom .navbar-brand {
+font-size: 1.5rem;
+}
+/* Ajuste para que los social icons se muestren bien en móviles dentro del menú colapsado */
+.navbar-custom .social-icons {
+padding: 10px 15px;
+border-top: 1px solid rgba(255, 255, 255, 0.2);
+justify-content: center; /* Centrar en móvil */
+}
+.navbar-custom .social-icons a {
+margin: 0 10px;
+}
+.hero-section {
+height: 450px;
+}
+.hero-content h1 {
+font-size: 2.5rem;
+}
+.hero-content p {
+font-size: 1.2rem;
+}
+.section-title {
+font-size: 2rem;
+}
+/* En pantallas medianas, que se muestren 2 columnas */
+.row-cols-md-3 > * {
+flex: 0 0 auto;
+width: 50%;
+}
+/* En pantallas pequeñas, que se muestre 1 columna */
+.row-cols-1 > * {
+width: 100%;
+}
+}
+@media (max-width: 767.98px) {
+.hero-section {
+height: 400px;
+}
+.hero-content h1 {
+font-size: 2rem;
+}
+.hero-content p {
+font-size: 1rem;
+}
+.hero-content .btn-primary {
+font-size: 1rem;
+padding: 10px 25px;
+}
+.social-icons {
+margin-top: 15px;
+justify-content: center;
+}
+}
+
+/* AJUSTE PARA TOPBAR EN MÓVILES MUY PEQUEÑOS (<576px) */
+@media (max-width: 575.98px) {
+    .topbar .container {
+        /* Fuerza a que los elementos (contacto y redes) se apilen verticalmente */
+        flex-direction: column; 
+        text-align: center;
+    }
+    .topbar .contact-info {
+        /* Un poco de espacio debajo de la info de contacto */
+        margin-bottom: 5px; 
+        /* Centrar los elementos dentro del div de contacto */
+        display: flex; 
+        flex-direction: column;
+        align-items: center;
+    }
+    .topbar .contact-info span {
+        /* Cada pieza de información de contacto en su propia línea */
+        display: block; 
+        margin-right: 0 !important; /* Quita el margen derecho que tenías para que no haya desbordamiento */
+    }
+    .topbar .social-icons {
+        /* Centrar los iconos de redes sociales */
+        margin-top: 5px;
+        display: flex;
+        justify-content: center;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+<div class="container d-flex justify-content-between align-items-center">
+<div class="contact-info">
+<span><i class="fas fa-phone"></i> +502 2438-5936</span>
+<span><i class="fas fa-envelope"></i> info@colegiohcm.edu.gt</span>
+</div>
+<div class="social-icons">
+<a href="https://www.facebook.com/Colegiohcm" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+<a href="https://www.instagram.com/colegiohcm?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+<a href="https://www.tiktok.com/@colegiohcm?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+</div>
+</div>
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-custom">
+<div class="container">
+<a class="navbar-brand" href="#">
+<img src="logo.png" alt="Logo Colegio HCM">
+Colegio HCM
+</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+<ul class="navbar-nav me-3">
+<li class="nav-item"><a class="nav-link active" href="#">Inicio</a></li>
+<li class="nav-item"><a class="nav-link" href="#quienes-somos">Quiénes Somos</a></li>
+<li class="nav-item"><a class="nav-link" href="#programas">Programas Académicos</a></li>
+<li class="nav-item"><a class="nav-link" href="#admisiones">Admisiones</a></li>
+<li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+</ul>
+
+<div class="social-icons d-flex align-items-center">
+<a href="https://www.facebook.com/Colegiohcm" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+<a href="https://www.instagram.com/colegiohcm?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+<a href="https://www.tiktok.com/@colegiohcm?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+</div>
+</div>
+</div>
+</nav>
+
+<div class="hero-section">
+<div id="heroCarousel" class="carousel slide carousel-fade h-100" data-bs-ride="carousel" data-bs-interval="5000">
+<div class="carousel-inner h-100">
+<div class="carousel-item active h-100">
+<img src="1.jpg" class="d-block w-100 h-100" alt="Grupo de estudiantes en el aula">
+</div>
+<div class="carousel-item h-100">
+<img src="2.jpg" class="d-block w-100 h-100" alt="Jóvenes en biblioteca">
+</div>
+<div class="carousel-item h-100">
+<img src="3.jpg" class="d-block w-100 h-100" alt="Estudiantes en el laboratorio de computación">
+</div>
+</div>
+</div>
+<div class="hero-content">
+<h1>¡Cultivando Mentes Brillantes!</h1>
+<p>Preparamos a nuestros estudiantes para los desafíos del mundo moderno con tecnología e innovación.</p>
+<a href="https://www.facebook.com/messages/t/569103813243190" class="btn btn-primary">Contáctanos</a>
+</div>
+<div class="text-on-bottom">
+<span>Educando en Familia</span>
+</div>
+</div>
+
+<main class="container mt-5">
+<section id="quienes-somos" class="mb-5 py-5">
+<h2 class="section-title">Quiénes Somos</h2>
+<div class="row align-items-center">
+<div class="col-md-6 mb-4 mb-md-0">
+<img src="4.jpg" class="img-fluid rounded-3 shadow-sm" alt="Grupo de estudiantes sonriendo">
+</div>
+<div class="col-md-6">
+<h3>Nuestra Misión y Visión</h3>
+<p class="lead">El Colegio HCM es una institución educativa mixta y laica, que promueve una educación basada en valores y la excelencia en sus alumnos, a través de un constante mejoramiento en búsqueda de la superación personal.</p>
+<p>Educamos a nuestros alumnos ayudándolos a desarrollar sus aptitudes físicas, intelectuales y sociales, realzando sus cualidades para que sean protagonistas de su propio proyecto de vida.</p>
+<a href="https://www.facebook.com/Colegiohcm" class="btn btn-outline-primary btn-sm mt-3" style="color: var(--primary-blue); border-color: var(--primary-blue);">Ver Más sobre Nosotros</a>
+</div>
+</div>
+</section>
+
+<section id="programas" class="mb-5 py-5 bg-white rounded-3 shadow-sm px-4">
+<h2 class="section-title">Nuestros Programas Académicos</h2>
+<div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
+
+<div class="col">
+<div class="card">
+<img src="5.jpg" class="card-img-top" alt="Niños jugando en preescolar">
+<div class="card-body">
+<h5 class="card-title">Educación Preescolar</h5>
+<p class="card-text">Desarrollo temprano en un ambiente lúdico y seguro. Estimulamos la creatividad y las primeras habilidades sociales.</p>
+<a href="https://colegiohcm.my.canva.site/" class="card-link">Explorar Preescolar <i class="fas fa-arrow-right"></i></a>
+</div>
+</div>
+</div>
+
+<div class="col">
+<div class="card">
+<img src="6.jpg" class="card-img-top" alt="Niños en clase de primaria">
+<div class="card-body">
+<h5 class="card-title">Educación Primaria</h5>
+<p class="card-text">Base sólida en conocimientos y valores. Fomentamos el pensamiento crítico y la curiosidad.</p>
+<a href="https://colegiohcm.my.canva.site/primaria-hcm" class="card-link">Explorar Primaria <i class="fas fa-arrow-right"></i></a>
+</div>
+</div>
+</div>
+
+<div class="col">
+<div class="card">
+<img src="7.jpg" class="card-img-top" alt="Galería de actividades">
+<div class="card-body">
+<h5 class="card-title">Galería de Fotos</h5>
+<p class="card-text">Conoce las fotos de nuestras actividades apoyadas por la Municipalidad de Mixco.</p>
+<a href="#" data-bs-toggle="modal" data-bs-target="#mosaicModal" class="card-link">
+Ver Galería <i class="fas fa-images"></i>
+</a>
+</div>
+</div>
+</div>
+
+</div>
+</section>
+
+<section id="admisiones" class="admisiones-section py-5 text-center">
+<h2 class="section-title">Proceso de Admisiones</h2>
+<p class="lead">¡Nos encantaría que tu hijo o hija forme parte de nuestra comunidad educativa!</p>
+
+<div class="steps-container">
+<div class="step">
+<div class="step-icon">📝</div>
+<h4>1. Solicitud</h4>
+<p>Completa el formulario en línea o en el colegio.</p>
+</div>
+<div class="step">
+<div class="step-icon">👩‍🏫</div>
+<h4>2. Entrevista</h4>
+<p>Conoce a nuestros docentes y comparte tus expectativas.</p>
+</div>
+<div class="step">
+<div class="step-icon">📚</div>
+<h4>3. Evaluación</h4>
+<p>Valoramos las habilidades del estudiante con actividades sencillas.</p>
+</div>
+<div class="step">
+<div class="step-icon">🎉</div>
+<h4>4. Bienvenida</h4>
+<p>Recibe tu carta de admisión y únete a la familia HCM.</p>
+</div>
+</div>
+
+<a href="https://forms.gle/X55FdWNr7sY42hvu8" class="btn-admisiones mt-4">
+Solicitar Información <i class="fas fa-chevron-right"></i>
+</a>
+</section>
+
+<section id="contacto" class="mb-5 py-5 bg-white rounded-3 shadow-sm px-4">
+<h2 class="section-title">Contáctanos y Ubicación</h2>
+<div class="row justify-content-center">
+<div class="col-lg-8">
+<p class="text-center lead">¿Tienes preguntas? Estamos aquí para ayudarte. Rellena el formulario o encuéntranos en nuestras redes sociales.</p>
+<div class="row text-center mt-4 mb-5">
+<div class="col-md-4 mb-3">
+<i class="fas fa-map-marker-alt fa-3x mb-3" style="color: var(--secondary-green);"></i>
+<h5>Dirección</h5>
+<p>9na. avenida A 13-41, Zona 1, Mixco, Guatemala.</p>
+</div>
+<div class="col-md-4 mb-3">
+<i class="fas fa-phone-alt fa-3x mb-3" style="color: var(--secondary-green);"></i>
+<h5>Teléfono</h5>
+<p>+502 2438-5936</p>
+</div>
+<div class="col-md-4 mb-3">
+<i class="fas fa-envelope fa-3x mb-3" style="color: var(--secondary-green);"></i>
+<h5>Correo Electrónico</h5>
+<p>info@colegiohcm.edu.gt</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="map-container mt-4">
+<h4 class="text-center mb-3">Encuéntranos fácilmente</h4>
+
+<div class="ratio ratio-16x9">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d405.7796038510527!2d-90.61305264580808!3d14.630495932114274!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85890a97218f19fb%3A0xd17645249c27cc17!2sColegio%20Herminia%20Castro%20De%20Mansilla!5e0!3m2!1ses-419!2sgt!4v1759274443829!5m2!1ses-419!2sgt"
+style="border:0; border-radius: 10px;"
+allowfullscreen=""
+loading="lazy"
+referrerpolicy="no-referrer-when-downgrade">
+</iframe>
+</div>
+
+<div class="text-center mt-3">
+<a href="https://ul.waze.com/ul?place=Eis5YSBBdmVuaWRhIEEsIENkYWQuIGRlIEd1YXRlbWFsYSwgR3VhdGVtYWxhIi4qLAoUChIJy8rijZkKiYUR7IGRkYA6LhcSFAoSCZfaIguaComFER-ynifGmzin&ll=14.62948780%2C-90.60882850&navigate=yes&utm_campaign=default&utm_source=waze_website&utm_medium=lm_share_location" class="btn btn-primary btn-waze" target="_blank">
+Navegar con Waze <i class="fab fa-waze"></i>
+</a>
+</div>
+</div>
+</section>
+
+<div class="modal fade" id="mosaicModal" tabindex="-1" aria-hidden="true">
+<div class="modal-dialog modal-fullscreen">
+<div class="modal-content bg-dark">
+<div class="modal-body p-0"> 
+    <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3" data-bs-dismiss="modal" aria-label="Cerrar" style="z-index: 1050;"></button>
+<center>
+<div class="mosaic">
+  <div><img src="8.jpg" alt="Foto Galería 1"></div>
+ <div><img src="9.jpg" alt="Foto Galería 2"></div>
+ <div><img src="10.jpg" alt="Foto Galería 3"></div>
+ <div><img src="11.jpg" alt="Foto Galería 4"></div>
+ <div><img src="12.jpg" alt="Foto Galería 5"></div>
+ <div><img src="13.jpg" alt="Foto Galería 6"></div>
+ <div><img src="14.jpg" alt="Foto Galería 7"></div>
+ <div><img src="15.jpg" alt="Foto Galería 8"></div>
+ <div><img src="16.jpg" alt="Foto Galería 9"></div>
+ <div><img src="17.jpg" alt="Foto Galería 10"></div>
+ <div><img src="18.jpg" alt="Foto Galería 11"></div>
+ <div><img src="19.jpg" alt="Foto Galería 12"></div>
+ <div><img src="20.jpg" alt="Foto Galería 13"></div>
+ <div><img src="21.jpg" alt="Foto Galería 14"></div>
+ <div><img src="22.jpg" alt="Foto Galería 15"></div>
+ <div><img src="23.jpg" alt="Foto Galería 16"></div>
+
+  <div><img src="8.jpg" alt="Foto Galería 17"></div>
+ <div><img src="9.jpg" alt="Foto Galería 18"></div>
+ <div><img src="10.jpg" alt="Foto Galería 19"></div>
+ <div><img src="11.jpg" alt="Foto Galería 20"></div>
+ <div><img src="12.jpg" alt="Foto Galería 21"></div>
+ <div><img src="13.jpg" alt="Foto Galería 22"></div>
+ <div><img src="14.jpg" alt="Foto Galería 23"></div>
+ <div><img src="15.jpg" alt="Foto Galería 24"></div>
+ <div><img src="16.jpg" alt="Foto Galería 25"></div>
+ <div><img src="17.jpg" alt="Foto Galería 26"></div>
+ <div><img src="18.jpg" alt="Foto Galería 27"></div>
+ <div><img src="19.jpg" alt="Foto Galería 28"></div>
+ <div><img src="20.jpg" alt="Foto Galería 29"></div>
+ <div><img src="21.jpg" alt="Foto Galería 30"></div>
+ <div><img src="22.jpg" alt="Foto Galería 31"></div>
+ <div><img src="23.jpg" alt="Foto Galería 32"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</center>
+</main>
+
+<footer class="footer">
+<div class="footer-main">
+<div class="footer-col">
+<h4>Colegio HCM</h4>
+<p>Educar en familia con valores y excelencia.</p>
+</div>
+<div class="footer-col">
+<h4>Contáctanos</h4>
+<p>📍 9na. avenida A 13-41, Zona 1, Mixco, Guatemala.</p>
+<p>📞 +502 2438-5936</p>
+<p>✉️ info@colegiohcm.edu.gt</p>
+</div>
+<div class="footer-col">
+<h4>Síguenos</h4>
+<p>🌐 <a href="https://www.facebook.com/Colegiohcm" style="color: white; text-decoration: none;">Facebook</a> | <a href="https://www.instagram.com/colegiohcm?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" style="color: white; text-decoration: none;">Instagram</a> | <a href="https://www.tiktok.com/@colegiohcm?is_from_webapp=1&sender_device=pc" style="color: white; text-decoration: none;">TikTok</a></p>
+</div>
+</div>
+<div class="footer-bottom">
+<p>© 2025 Colegio HCM - Todos los derechos reservados.</p>
+</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+</body>
+</html>
